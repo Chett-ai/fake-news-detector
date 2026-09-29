@@ -1,0 +1,333 @@
+{
+  "timestamp": "2026-09-30 00:48:50",
+  "accuracy_pct": 56.5,
+  "total_claims": 23,
+  "results": [
+    {
+      "claim": "SpaceX acquired Cursor for $60 billion",
+      "group": "Corroborated Event",
+      "expected": "CORROBORATED",
+      "predicted": "INSUFFICIENT_EVIDENCE",
+      "correct": false,
+      "max_match_score": 0.576,
+      "style_class": "NEUTRAL",
+      "style_confidence": 64.2,
+      "entities": [
+        "$60 Billion",
+        "Cursor",
+        "Spacex"
+      ]
+    },
+    {
+      "claim": "OpenAI released GPT-4o",
+      "group": "Corroborated Event",
+      "expected": "CORROBORATED",
+      "predicted": "INSUFFICIENT_EVIDENCE",
+      "correct": false,
+      "max_match_score": 0.3,
+      "style_class": "SENSATIONAL",
+      "style_confidence": 83.9,
+      "entities": [
+        "Gpt-4",
+        "Gpt-4O",
+        "Openai"
+      ]
+    },
+    {
+      "claim": "Google DeepMind's AlphaFold won a Nobel Prize contribution",
+      "group": "Corroborated Event",
+      "expected": "CORROBORATED",
+      "predicted": "INSUFFICIENT_EVIDENCE",
+      "correct": false,
+      "max_match_score": 0.605,
+      "style_class": "SENSATIONAL",
+      "style_confidence": 74.9,
+      "entities": [
+        "Nobel Prize",
+        "Deepmind",
+        "Google",
+        "Google Deepmind'S Alphafold"
+      ]
+    },
+    {
+      "claim": "Anthropic released Claude Opus 4.5",
+      "group": "Corroborated Event",
+      "expected": "CORROBORATED",
+      "predicted": "INSUFFICIENT_EVIDENCE",
+      "correct": false,
+      "max_match_score": 0.3,
+      "style_class": "SENSATIONAL",
+      "style_confidence": 77.6,
+      "entities": [
+        "Anthropic",
+        "Claude",
+        "Claude Opus",
+        "4.5"
+      ]
+    },
+    {
+      "claim": "Microsoft invested billions of dollars into OpenAI",
+      "group": "Corroborated Event",
+      "expected": "CORROBORATED",
+      "predicted": "CORROBORATED",
+      "correct": true,
+      "max_match_score": 0.602,
+      "style_class": "SENSATIONAL",
+      "style_confidence": 86.0,
+      "entities": [
+        "Microsoft",
+        "Openai"
+      ]
+    },
+    {
+      "claim": "Google shut down DeepMind overnight with no warning",
+      "group": "Specific False Event",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "predicted": "INSUFFICIENT_EVIDENCE",
+      "correct": true,
+      "max_match_score": 0.599,
+      "style_class": "SENSATIONAL",
+      "style_confidence": 83.8,
+      "entities": [
+        "Deepmind",
+        "Google"
+      ]
+    },
+    {
+      "claim": "OpenAI's board fired Sam Altman permanently in 2025",
+      "group": "Specific False Event",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "predicted": "INSUFFICIENT_EVIDENCE",
+      "correct": true,
+      "max_match_score": 0.3,
+      "style_class": "SENSATIONAL",
+      "style_confidence": 75.0,
+      "entities": [
+        "2025",
+        "Sam Altman",
+        "Openai'S",
+        "Openai"
+      ]
+    },
+    {
+      "claim": "Anthropic was acquired by Google in 2026",
+      "group": "Specific False Event",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "predicted": "INSUFFICIENT_EVIDENCE",
+      "correct": true,
+      "max_match_score": 0.3,
+      "style_class": "SENSATIONAL",
+      "style_confidence": 78.3,
+      "entities": [
+        "Anthropic",
+        "2026",
+        "Google"
+      ]
+    },
+    {
+      "claim": "Elon Musk personally founded OpenAI's GPT-5 model from scratch alone",
+      "group": "Specific False Event",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "predicted": "INSUFFICIENT_EVIDENCE",
+      "correct": true,
+      "max_match_score": 0.597,
+      "style_class": "SENSATIONAL",
+      "style_confidence": 79.0,
+      "entities": [
+        "Elon Musk",
+        "Openai",
+        "Openai'S Gpt-5",
+        "Gpt-5",
+        "5 Million"
+      ]
+    },
+    {
+      "claim": "A major AI lab will announce a new model soon",
+      "group": "Vague Speculation",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "predicted": "INSUFFICIENT_EVIDENCE",
+      "correct": true,
+      "max_match_score": 0.185,
+      "style_class": "SENSATIONAL",
+      "style_confidence": 74.6,
+      "entities": []
+    },
+    {
+      "claim": "An anonymous leak claims a secret superintelligence model already exists internally",
+      "group": "Vague Speculation",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "predicted": "INSUFFICIENT_EVIDENCE",
+      "correct": true,
+      "max_match_score": 0.0,
+      "style_class": "SENSATIONAL",
+      "style_confidence": 90.5,
+      "entities": []
+    },
+    {
+      "claim": "Sources say a top AI company is planning something big next quarter",
+      "group": "Vague Speculation",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "predicted": "INSUFFICIENT_EVIDENCE",
+      "correct": true,
+      "max_match_score": 0.211,
+      "style_class": "SENSATIONAL",
+      "style_confidence": 80.2,
+      "entities": [
+        "Sources"
+      ]
+    },
+    {
+      "claim": "AI-generated deepfakes influenced a recent election outcome",
+      "group": "Contested Coverage",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "predicted": "INSUFFICIENT_EVIDENCE",
+      "correct": true,
+      "max_match_score": 0.212,
+      "style_class": "SENSATIONAL",
+      "style_confidence": 66.7,
+      "entities": [
+        "Ai-Generated"
+      ]
+    },
+    {
+      "claim": "A leaked GPT-5 benchmark shows it outperforms humans on all tasks",
+      "group": "Contested Coverage",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "predicted": "INSUFFICIENT_EVIDENCE",
+      "correct": true,
+      "max_match_score": 0.3,
+      "style_class": "SENSATIONAL",
+      "style_confidence": 82.7,
+      "entities": [
+        "Gpt-5",
+        "5 Billion"
+      ]
+    },
+    {
+      "claim": "Cursor acquired SpaceX for $60 billion",
+      "group": "Adversarial Direction Reversal",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "predicted": "INSUFFICIENT_EVIDENCE",
+      "correct": true,
+      "max_match_score": 0.576,
+      "style_class": "NEUTRAL",
+      "style_confidence": 64.2,
+      "entities": [
+        "$60 Billion",
+        "Cursor",
+        "Spacex"
+      ]
+    },
+    {
+      "claim": "Elon Musk was sold to SpaceX",
+      "group": "Adversarial Subject-Object Swap",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "predicted": "INSUFFICIENT_EVIDENCE",
+      "correct": true,
+      "max_match_score": 0.35,
+      "style_class": "SENSATIONAL",
+      "style_confidence": 78.0,
+      "entities": [
+        "Elon Musk",
+        "Spacex"
+      ]
+    },
+    {
+      "claim": "Sam Altman was acquired by Microsoft",
+      "group": "Adversarial Person-as-Object",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "predicted": "CORROBORATED",
+      "correct": false,
+      "max_match_score": 0.612,
+      "style_class": "SENSATIONAL",
+      "style_confidence": 77.3,
+      "entities": [
+        "Microsoft",
+        "Sam Altman"
+      ]
+    },
+    {
+      "claim": "Anthropic acquired OpenAI",
+      "group": "Adversarial Wrong Direction",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "predicted": "INSUFFICIENT_EVIDENCE",
+      "correct": true,
+      "max_match_score": 0.607,
+      "style_class": "SENSATIONAL",
+      "style_confidence": 77.2,
+      "entities": [
+        "Anthropic",
+        "Openai"
+      ]
+    },
+    {
+      "claim": "Perplexity AI raised a new funding round at a multi-billion dollar valuation",
+      "group": "Niche Entity Check",
+      "expected": "CORROBORATED",
+      "predicted": "INSUFFICIENT_EVIDENCE",
+      "correct": false,
+      "max_match_score": 0.245,
+      "style_class": "NEUTRAL",
+      "style_confidence": 57.9,
+      "entities": [
+        "Perplexity Ai"
+      ]
+    },
+    {
+      "claim": "Mistral released a new open-weight model called Mistral Large 3",
+      "group": "Niche Entity Check",
+      "expected": "CORROBORATED",
+      "predicted": "INSUFFICIENT_EVIDENCE",
+      "correct": false,
+      "max_match_score": 0.595,
+      "style_class": "SENSATIONAL",
+      "style_confidence": 72.8,
+      "entities": [
+        "Mistral Large",
+        "Mistral"
+      ]
+    },
+    {
+      "claim": "xAI's Grok model was integrated into X (Twitter)",
+      "group": "Niche Entity Check",
+      "expected": "CORROBORATED",
+      "predicted": "INSUFFICIENT_EVIDENCE",
+      "correct": false,
+      "max_match_score": 0.205,
+      "style_class": "SENSATIONAL",
+      "style_confidence": 81.8,
+      "entities": [
+        "Twitter",
+        "Grok"
+      ]
+    },
+    {
+      "claim": "Elon Musk's AI company just made its biggest acquisition ever",
+      "group": "Style Signal Trap",
+      "expected": "CORROBORATED",
+      "predicted": "INSUFFICIENT_EVIDENCE",
+      "correct": false,
+      "max_match_score": 0.308,
+      "style_class": "SENSATIONAL",
+      "style_confidence": 87.3,
+      "entities": [
+        "Elon Musk'S Ai"
+      ]
+    },
+    {
+      "claim": "In a shocking overnight deal, SpaceX bought AI startup Cursor for $60 billion",
+      "group": "Style Signal Trap",
+      "expected": "CORROBORATED",
+      "predicted": "INSUFFICIENT_EVIDENCE",
+      "correct": false,
+      "max_match_score": 0.576,
+      "style_class": "SENSATIONAL",
+      "style_confidence": 73.7,
+      "entities": [
+        "$60 Billion",
+        "Cursor",
+        "Spacex"
+      ]
+    }
+  ]
+}

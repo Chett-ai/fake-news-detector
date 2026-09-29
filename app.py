@@ -40,7 +40,8 @@ def add_cors_headers(response):
     response.headers["Access-Control-Allow-Methods"] = "GET,POST,OPTIONS"
     return response
 
-load_dotenv()
+load_dotenv(".env.local")
+load_dotenv(".env")
 
 NEWS_API_KEY = os.getenv("NEWS_API_KEY")
 FACTCHECK_API_KEY = os.getenv("FACTCHECK_API_KEY")
@@ -194,18 +195,21 @@ def classify_text(text):
         )[0]
 
         confidence = 0.0
+        raw_probs = {}
 
         if hasattr(model, "predict_proba"):
+            probabilities = model.predict_proba(transformed_text)[0]
+            confidence = float(max(probabilities) * 100)
+            classes = list(getattr(model, "classes_", ["FAKE", "REAL"]))
+            raw_probs = {str(cls).upper(): float(p) for cls, p in zip(classes, probabilities)}
 
-            probabilities = model.predict_proba(
-                transformed_text
-            )[0]
-
-            confidence = float(
-                max(probabilities) * 100
-            )
-
-        prediction = str(prediction).upper()
+            # Recalibrate: If probability margin is narrow (< 65% confidence), framing is BALANCED / NEUTRAL
+            if confidence < 65.0:
+                prediction = "NEUTRAL"
+            else:
+                prediction = "SENSATIONAL" if str(prediction).upper() in ["FAKE", "0"] else "INFORMATIONAL"
+        else:
+            prediction = str(prediction).upper()
 
         return (
             prediction,
@@ -1041,8 +1045,17 @@ def predict():
             confidence,
             all_fact_checks,
             reddit_threads,
-            news_consensus
+            news_consensus,
+            claim=text
         )
+
+        # Scoped ML Stylometric Pattern Signal
+        linguistic_style_signal = {
+            "prediction_class": prediction,
+            "confidence_pct": round(confidence * 100 if confidence <= 1.0 else confidence, 1),
+            "shap_words": shap_words,
+            "note": "Linguistic style analysis measures headline formatting patterns and lexical sensationalism. It is a secondary stylistic signal, NOT a factual truth determination."
+        }
 
         # Deep Rhetorical & Cognitive Vulnerability Audit
         rhetoric_analysis = analyze_rhetorical_patterns(text)
@@ -1050,27 +1063,27 @@ def predict():
         # Temporal Anomaly / Timeline Recirculation Check
         temporal_audit = audit_temporal_timeline(text, news_consensus)
 
-        final_truth_status = dossier.get("final_truth_status", prediction)
-
         return jsonify({
             "success": True,
-            "prediction": prediction,
-            "confidence": confidence,
-            "final_truth_status": final_truth_status,
+            "evidence_ledger": dossier,
+            "assessment": dossier.get("assessment", "INSUFFICIENT_EVIDENCE"),
+            "assessment_label": dossier.get("assessment_label", "Insufficient Evidence Found"),
+            "confidence_state": dossier.get("confidence_state", "low-evidence"),
+            "reasoning": dossier.get("reasoning", ""),
+            "extracted_entities": dossier.get("extracted_entities", []),
+            "ranked_sources": dossier.get("ranked_sources", []),
+            "evidence_counts": dossier.get("evidence_counts", {}),
+            "community_sentiment": dossier.get("community_sentiment", {}),
+            "linguistic_style_signal": linguistic_style_signal,
             "shap_words": shap_words,
             "shap_available": SHAP_READY,
             "verification_status": fact_check_result["verification_status"],
             "verification_message": fact_check_result["verification_message"],
             "direct_fact_checks": fact_check_result["direct_fact_checks"],
             "related_fact_checks": fact_check_result["related_fact_checks"],
-            "direct_fact_check_count": len(fact_check_result["direct_fact_checks"]),
-            "related_fact_check_count": len(fact_check_result["related_fact_checks"]),
-            "reddit_threads": reddit_threads,
-            "news_consensus": news_consensus,
-            "research_dossier": dossier,
             "rhetoric_analysis": rhetoric_analysis,
             "temporal_audit": temporal_audit,
-            "disclaimer": "Truth status is cross-referenced in real-time with verified news consensus and institutional fact checks."
+            "disclaimer": "Factual assessments are based strictly on evidence corroboration across official channels, verified fact-checking databases, and established tech press."
         })
 
     except Exception as e:
