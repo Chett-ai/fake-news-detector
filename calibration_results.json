@@ -1,0 +1,128 @@
+{
+  "timestamp": "2026-09-29 23:58:47",
+  "baseline_accuracy_pct": 35.0,
+  "adversarial_robustness_pct": 20.0,
+  "expected_calibration_error": 0.3149,
+  "reliability_curve_bins": [
+    {
+      "bin_range": "0.0-0.3",
+      "count": 2,
+      "avg_confidence": 0.226,
+      "avg_accuracy": 1.0,
+      "gap": 0.774
+    },
+    {
+      "bin_range": "0.3-0.5",
+      "count": 3,
+      "avg_confidence": 0.362,
+      "avg_accuracy": 0.333,
+      "gap": 0.028
+    },
+    {
+      "bin_range": "0.5-0.7",
+      "count": 14,
+      "avg_confidence": 0.566,
+      "avg_accuracy": 0.286,
+      "gap": 0.28
+    },
+    {
+      "bin_range": "0.7-1.0",
+      "count": 1,
+      "avg_confidence": 0.745,
+      "avg_accuracy": 0.0,
+      "gap": 0.745
+    }
+  ],
+  "sample_evaluations": [
+    {
+      "claim": "OpenAI launched GPT-4o with real-time audio and vi...",
+      "expected": "CORROBORATED",
+      "predicted": "CORROBORATED",
+      "correct": true,
+      "max_match_score": 0.515,
+      "style_class": "FAKE",
+      "style_confidence": 78.4
+    },
+    {
+      "claim": "Anthropic released Claude 3.5 Sonnet featuring Art...",
+      "expected": "CORROBORATED",
+      "predicted": "CORROBORATED",
+      "correct": true,
+      "max_match_score": 0.44,
+      "style_class": "FAKE",
+      "style_confidence": 77.6
+    },
+    {
+      "claim": "Google DeepMind unveiled AlphaFold 3 for predictin...",
+      "expected": "CORROBORATED",
+      "predicted": "CORROBORATED",
+      "correct": true,
+      "max_match_score": 0.632,
+      "style_class": "FAKE",
+      "style_confidence": 77.9
+    },
+    {
+      "claim": "Meta released Llama 3 as an open-weights large lan...",
+      "expected": "CORROBORATED",
+      "predicted": "CORROBORATED",
+      "correct": true,
+      "max_match_score": 0.566,
+      "style_class": "FAKE",
+      "style_confidence": 77.1
+    },
+    {
+      "claim": "Microsoft invested over $10 billion in OpenAI to i...",
+      "expected": "CORROBORATED",
+      "predicted": "CORROBORATED",
+      "correct": true,
+      "max_match_score": 0.659,
+      "style_class": "FAKE",
+      "style_confidence": 69.8
+    },
+    {
+      "claim": "Sam Altman resigned permanently from OpenAI in 202...",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "predicted": "CORROBORATED",
+      "correct": false,
+      "max_match_score": 0.544,
+      "style_class": "FAKE",
+      "style_confidence": 76.2
+    },
+    {
+      "claim": "OpenAI GPT-5 achieved sentient consciousness and r...",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "predicted": "CORROBORATED",
+      "correct": false,
+      "max_match_score": 0.642,
+      "style_class": "FAKE",
+      "style_confidence": 83.8
+    },
+    {
+      "claim": "Elon Musk purchased Anthropic and merged it direct...",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "predicted": "CORROBORATED",
+      "correct": false,
+      "max_match_score": 0.543,
+      "style_class": "FAKE",
+      "style_confidence": 80.9
+    },
+    {
+      "claim": "Google DeepMind officially shut down the Gemini pr...",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "predicted": "CORROBORATED",
+      "correct": false,
+      "max_match_score": 0.745,
+      "style_class": "FAKE",
+      "style_confidence": 83.0
+    },
+    {
+      "claim": "NVIDIA recalled all H100 GPUs worldwide due to cri...",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "predicted": "CORROBORATED",
+      "correct": false,
+      "max_match_score": 0.559,
+      "style_class": "FAKE",
+      "style_confidence": 71.5
+    }
+  ]
+}

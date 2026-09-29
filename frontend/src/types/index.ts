@@ -1,175 +1,150 @@
 // ============================================================
-// SHAP Explanation
+// VERIFAI — Types & Interface Declarations
 // ============================================================
 
-export interface ShapWord {
-  word: string;
-  shap: number;       // absolute value
-  raw_shap: number;   // signed value (+FAKE / -REAL)
-  direction: "FAKE" | "REAL";
-}
-
-// ============================================================
-// Fact Check
-// ============================================================
-
-export interface FactCheckItem {
-  claim: string;
-  publisher: string;
-  rating: string;
-  interpretation: "CONTRADICTED" | "SUPPORTED" | "MIXED" | "UNKNOWN";
-  title: string;
-  url: string;
-  review_date: string;
-  similarity: number;
-}
-
-export type VerificationStatus =
+export type EpistemicAssessment =
+  | "CORROBORATED"
   | "CONTRADICTED"
-  | "VERIFIED"
-  | "INSUFFICIENT EVIDENCE";
+  | "DISPUTED"
+  | "INSUFFICIENT_EVIDENCE";
 
-export interface RedditThread {
+export interface RankedSource {
+  title: string;
+  source: string;
+  url: string;
+  snippet: string;
+  tier_label: string;
+  tier_weight: number;
+  badge_color: string;
+  match_score_pct: number;
+}
+
+export interface EvidenceCounts {
+  official_sources: number;
+  factcheck_hits: number;
+  press_coverage: number;
+  community_threads: number;
+}
+
+export interface RedditSentimentThread {
   source: string;
   subreddit: string;
   title: string;
   snippet: string;
   url: string;
-  score: number;
-  num_comments: number;
+  upvotes: number;
   debunk_flag: boolean;
-  created_utc: number;
 }
 
-export interface NewsConsensusItem {
-  source: string;
-  title: string;
+export interface CommunitySentiment {
+  thread_count: number;
+  threads: RedditSentimentThread[];
+}
+
+export interface LinguisticStyleSignal {
+  prediction_class: "REAL" | "FAKE";
+  confidence_pct: number;
+  shap_words: ShapWord[];
+  note: string;
+}
+
+export interface ShapWord {
+  word: string;
+  shap: number;
+  raw_shap: number;
+  direction: "REAL" | "FAKE";
+}
+
+export interface DirectFactCheck {
+  claim_text: string;
+  claimant: string;
+  publisher: string;
   url: string;
-  debunk_flag: boolean;
+  rating: string;
+  date: string;
+  interpretation: "CONTRADICTED" | "CORROBORATED" | "NEUTRAL";
 }
 
-export interface RhetoricalTechnique {
+export interface RhetoricTechnique {
   id: string;
   label: string;
+  intensity: "High" | "Medium" | "Low";
+  matched_words: string[];
   description: string;
   color: string;
-  matched_words: string[];
-  intensity: "High" | "Medium";
 }
 
 export interface RhetoricAnalysis {
-  detected_techniques: RhetoricalTechnique[];
-  manipulation_score: number;
   risk_level: "Severe" | "Moderate" | "Low";
-  count: number;
+  manipulation_score: number;
+  detected_techniques: RhetoricTechnique[];
 }
 
 export interface TemporalAudit {
   temporal_mismatch_detected: boolean;
-  historical_references: number[];
-  audit_note: string;
+  audit_note?: string;
 }
-
-export interface ResearchDossier {
-  research_verdict: "DEBUNKED" | "DISPUTED" | "CORROBORATED" | "UNVERIFIED" | "MIXED CONTEXT";
-  final_truth_status?: "REAL" | "FAKE" | "DISPUTED" | "UNVERIFIED" | "MIXED";
-  summary: string;
-  confidence_level: "High" | "Medium" | "Low";
-  evidence_sources_count: number;
-  reddit_threads_count: number;
-  fact_checks_count: number;
-  news_consensus_count?: number;
-}
-
-// ============================================================
-// Prediction API  —  POST /predict
-// ============================================================
 
 export interface PredictionResponse {
   success: boolean;
-  prediction: "REAL" | "FAKE" | "UNKNOWN";
-  final_truth_status?: "REAL" | "FAKE" | "DISPUTED" | "UNVERIFIED" | "MIXED";
-  confidence: number;
+  error?: string;
+  assessment: EpistemicAssessment;
+  assessment_label: string;
+  confidence_state: "high-evidence" | "medium-evidence" | "low-evidence";
+  reasoning: string;
+  ranked_sources: RankedSource[];
+  evidence_counts: EvidenceCounts;
+  community_sentiment: CommunitySentiment;
+  linguistic_style_signal: LinguisticStyleSignal;
   shap_words: ShapWord[];
   shap_available: boolean;
-  verification_status: VerificationStatus;
+  verification_status: string;
   verification_message: string;
-  direct_fact_checks: FactCheckItem[];
-  related_fact_checks: FactCheckItem[];
-  direct_fact_check_count: number;
-  related_fact_check_count: number;
-  reddit_threads?: RedditThread[];
-  news_consensus?: NewsConsensusItem[];
-  research_dossier?: ResearchDossier;
+  direct_fact_checks: DirectFactCheck[];
+  related_fact_checks: DirectFactCheck[];
   rhetoric_analysis?: RhetoricAnalysis;
   temporal_audit?: TemporalAudit;
   disclaimer: string;
-  error?: string;
-}
-
-// ============================================================
-// News Article
-// ============================================================
-
-export interface NewsArticle {
-  title: string;
-  description: string;
-  content: string;
-  source: string;
-  author: string;
-  url: string;
-  image: string;
-  publishedAt: string;
 }
 
 export type NewsCategory =
   | "general"
   | "business"
-  | "entertainment"
-  | "health"
+  | "technology"
   | "science"
+  | "health"
   | "sports"
-  | "technology";
+  | "entertainment";
 
-// ============================================================
-// Live News API  —  GET /live-news
-// ============================================================
+export interface NewsArticle {
+  title: string;
+  description: string | null;
+  url: string;
+  image: string | null;
+  source: string;
+  publishedAt: string;
+  category: NewsCategory;
+}
 
 export interface LiveNewsResponse {
   success: boolean;
-  source: string;
-  category: NewsCategory;
-  page: number;
-  pageSize: number;
-  totalResults: number;
   articles: NewsArticle[];
+  category: NewsCategory;
+  count: number;
+  page: number;
+  totalResults: number;
   error?: string;
 }
-
-// ============================================================
-// Search News API  —  GET /search-news
-// ============================================================
 
 export interface SearchNewsResponse {
   success: boolean;
   query: string;
-  page: number;
-  pageSize: number;
-  totalResults: number;
   articles: NewsArticle[];
+  count: number;
   error?: string;
 }
 
-// ============================================================
-// Health API  —  GET /health
-// ============================================================
-
 export interface HealthResponse {
   status: string;
-  model_loaded: boolean;
-  vectorizer_loaded: boolean;
-  shap_ready: boolean;
-  shap_available: boolean;
-  news_api_configured: boolean;
-  factcheck_api_configured: boolean;
+  model_ready: boolean;
 }

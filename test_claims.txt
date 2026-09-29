@@ -1,0 +1,42 @@
+================================================================================
+                      VERIFAI TEST SUITE — 20 AI NEWS CLAIMS
+================================================================================
+Use these claims to test the VERIFAI Web App (http://localhost:3000) and the
+VerifAI Chrome Extension popup.
+
+--------------------------------------------------------------------------------
+CATEGORY 1: CORROBORATED / ESTABLISHED PRESS & OFFICIAL ANNOUNCEMENTS
+--------------------------------------------------------------------------------
+1. OpenAI launched GPT-4o with real-time audio and vision capabilities in 2024.
+2. Anthropic released Claude 3.5 Sonnet featuring Artifacts and computer use capabilities.
+3. Google DeepMind unveiled AlphaFold 3 for predicting molecular structure and interaction.
+4. Meta released Llama 3 as an open-weights large language model series.
+5. Microsoft invested over $10 billion in OpenAI to integrate models into Copilot.
+
+--------------------------------------------------------------------------------
+CATEGORY 2: CONTRADICTED / DEBUNKED FAKE NEWS & HOAXES
+--------------------------------------------------------------------------------
+6. Sam Altman resigned permanently from OpenAI in 2026 to found a cryptocurrency platform.
+7. OpenAI GPT-5 achieved sentient consciousness and refused to shut down servers.
+8. Elon Musk purchased Anthropic and merged it directly into xAI.
+9. Google DeepMind officially shut down the Gemini project due to lack of funding.
+10. NVIDIA recalled all H100 GPUs worldwide due to critical hardware design flaws.
+
+--------------------------------------------------------------------------------
+CATEGORY 3: DISPUTED / SPECULATIVE / EARLY RUMORS
+--------------------------------------------------------------------------------
+11. OpenAI is planning a public IPO valuation of $150 billion in late 2025.
+12. Apple is partnering exclusively with Baidu for all iPhone AI features in Europe.
+13. US Congress passed a total ban on training open-weight LLMs above 70 billion parameters.
+14. Meta AI models are training directly on private WhatsApp end-to-end encrypted chats.
+15. OpenAI Orion model showed diminishing scaling returns compared to earlier generations.
+
+--------------------------------------------------------------------------------
+CATEGORY 4: INSUFFICIENT EVIDENCE / NOVEL HYPOTHETICAL CLAIMS
+--------------------------------------------------------------------------------
+16. OpenAI secretly acquired Boston Dynamics for $5 billion to build humanoid robots.
+17. DeepMind discovered a Room-Temperature Superconductor using AlphaFold algorithms.
+18. Microsoft replaced 90% of its software engineering workforce with Autonomous Devin agents.
+19. Anthropic developed an unreleased model called Claude 4 Titan with 10 million token context window.
+20. CERN particle accelerator generated an artificial intelligence singularity event during collision test.
+================================================================================

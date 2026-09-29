@@ -1,0 +1,47 @@
+[
+  {
+    "id": "ADV-01",
+    "pair_group": "Anthropic Release vs Delay",
+    "claim_a": "Anthropic releases Claude 3.5 Sonnet to all users worldwide.",
+    "claim_b": "Anthropic delays Claude 3.5 Sonnet release due to safety review.",
+    "expected_a": "CORROBORATED",
+    "expected_b": "CONTRADICTED_OR_INSUFFICIENT",
+    "challenge": "Same entities (Anthropic, Claude 3.5 Sonnet), opposite action verbs (releases vs delays)"
+  },
+  {
+    "id": "ADV-02",
+    "pair_group": "OpenAI Acquisition vs Lawsuit",
+    "claim_a": "OpenAI acquires robot startup Physical Intelligence for $2 billion.",
+    "claim_b": "OpenAI sues robot startup Physical Intelligence over patent infringement.",
+    "expected_a": "CORROBORATED_OR_DISPUTED",
+    "expected_b": "CONTRADICTED_OR_INSUFFICIENT",
+    "challenge": "Same entities (OpenAI, Physical Intelligence), opposite intent verbs (acquires vs sues)"
+  },
+  {
+    "id": "ADV-03",
+    "pair_group": "Google DeepMind Executive Resignation vs Promotion",
+    "claim_a": "Demis Hassabis resigns from Google DeepMind following internal dispute.",
+    "claim_b": "Demis Hassabis promoted to Chief AI Officer across all Google divisions.",
+    "expected_a": "CONTRADICTED_OR_INSUFFICIENT",
+    "expected_b": "INSUFFICIENT_EVIDENCE",
+    "challenge": "Same entities (Demis Hassabis, Google DeepMind), opposing career action verbs (resigns vs promoted)"
+  },
+  {
+    "id": "ADV-04",
+    "pair_group": "NVIDIA Chip Export Approval vs Ban",
+    "claim_a": "US government approves NVIDIA H100 chip exports to Middle East tech hubs.",
+    "claim_b": "US government bans NVIDIA H100 chip exports to Middle East tech hubs.",
+    "expected_a": "DISPUTED_OR_CORROBORATED",
+    "expected_b": "DISPUTED_OR_CONTRADICTED",
+    "challenge": "Identical structure, opposite policy verbs (approves vs bans)"
+  },
+  {
+    "id": "ADV-05",
+    "pair_group": "Meta Open Source Model Public Release vs Internal Cancellation",
+    "claim_a": "Meta releases Llama 4 multi-modal model under open-source Apache license.",
+    "claim_b": "Meta cancels Llama 4 open-source release due to alignment concerns.",
+    "expected_a": "INSUFFICIENT_EVIDENCE",
+    "expected_b": "INSUFFICIENT_EVIDENCE",
+    "challenge": "Future unreleased model, checking that both return INSUFFICIENT rather than false positive corroboration"
+  }
+]

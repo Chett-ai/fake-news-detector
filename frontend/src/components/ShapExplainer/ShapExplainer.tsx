@@ -19,19 +19,20 @@ export default function ShapExplainer({ shapWords, available }: Props) {
     <div className={styles.container}>
       <div className={styles.header}>
         <div>
-          <h3 className={styles.title}>🔬 Explainable AI (SHAP Word Importance)</h3>
+          <span className={styles.tag}>SECONDARY LINGUISTIC PATTERN ANALYSIS</span>
+          <h3 className={styles.title}>SHAP Word Importance (Stylistic Feature Attribution)</h3>
           <p className={styles.subtitle}>
-            Feature attribution breakdown showing which tokens drove the classification verdict.
+            Notice: This breakdown shows tokens associated with sensationalized vs standard headline style. It measures <strong>formatting pattern</strong>, NOT factual truth.
           </p>
         </div>
         <div className={styles.legend}>
           <span className={styles.legendItem}>
             <span className={`${styles.dot} ${styles.fakeDot}`} />
-            Pushes FAKE
+            Sensational Pattern
           </span>
           <span className={styles.legendItem}>
             <span className={`${styles.dot} ${styles.realDot}`} />
-            Pushes REAL
+            Standard Pattern
           </span>
         </div>
       </div>
@@ -62,7 +63,7 @@ export default function ShapExplainer({ shapWords, available }: Props) {
       </div>
 
       <div className={styles.tokenSection}>
-        <div className={styles.tokenHeading}>Key Word Signals in Article</div>
+        <div className={styles.tokenHeading}>Lexical Feature Attribution Signals</div>
         <div className={styles.tokens}>
           {shapWords.map((item: ShapWord, idx: number) => (
             <span
@@ -72,7 +73,7 @@ export default function ShapExplainer({ shapWords, available }: Props) {
               }`}
               title={`Impact: ${item.raw_shap.toFixed(4)} (${item.direction})`}
             >
-              {item.word} ({item.direction})
+              {item.word} ({item.direction === "FAKE" ? "Sensational" : "Standard"})
             </span>
           ))}
         </div>

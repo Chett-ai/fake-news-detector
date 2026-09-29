@@ -1,0 +1,234 @@
+/* ============================================================
+   VerifAI Floating Injected Evidence Card — CSS Isolation
+   ============================================================ */
+
+#verifai-floating-card-root {
+  position: absolute;
+  z-index: 2147483647; /* Topmost z-index */
+  width: 380px;
+  max-width: 90vw;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18), 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #0F172A;
+  font-size: 13px;
+  line-height: 1.5;
+  box-sizing: border-box;
+  overflow: hidden;
+  animation: verifaiSlideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes verifaiSlideIn {
+  from { opacity: 0; transform: translateY(10px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+#verifai-floating-card-root * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header */
+.verifai-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1E2B78;
+  color: #FFFFFF;
+  padding: 10px 14px;
+}
+
+.verifai-brand {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+.verifai-close-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.verifai-close-btn:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Body */
+.verifai-card-body {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 480px;
+  overflow-y: auto;
+}
+
+/* Loading State */
+.verifai-loading-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  gap: 10px;
+  color: #64748B;
+  font-size: 12px;
+}
+
+.verifai-spinner {
+  width: 22px;
+  height: 22px;
+  border: 3px solid #E2E8F0;
+  border-top-color: #7C3AED;
+  border-radius: 50%;
+  animation: verifaiSpin 0.7s linear infinite;
+}
+
+@keyframes verifaiSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* Assessment Badges (4 States) */
+.verifai-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.verifai-badge-CORROBORATED { background: #DCFCE7; color: #15803D; border: 1px solid #BBF7D0; }
+.verifai-badge-CONTRADICTED { background: #FEE2E2; color: #B91C1C; border: 1px solid #FECACA; }
+.verifai-badge-DISPUTED { background: #FFEDD5; color: #C2410C; border: 1px solid #FED7AA; }
+.verifai-badge-INSUFFICIENT_EVIDENCE { background: #F1F5F9; color: #475569; border: 1px solid #E2E8F0; }
+
+.verifai-reasoning {
+  font-size: 12px;
+  color: #334155;
+  line-height: 1.5;
+}
+
+/* Tiered Sources */
+.verifai-sources-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.verifai-source-item {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 6px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.verifai-source-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.verifai-tier-chip {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 999px;
+  color: #FFFFFF;
+}
+
+.verifai-chip-official { background: #7C3AED; }
+.verifai-chip-factcheck_org { background: #2563EB; }
+.verifai-chip-established_press { background: #0891B2; }
+
+.verifai-match-pct {
+  font-size: 10px;
+  font-weight: 700;
+  color: #2E37B6;
+}
+
+.verifai-source-link {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1E2B78;
+  text-decoration: none;
+}
+
+.verifai-source-link:hover {
+  text-decoration: underline;
+}
+
+/* Accordion Community Section */
+.verifai-community-accordion {
+  background: #FFF7ED;
+  border: 1px solid #FFEDD5;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.verifai-accordion-toggle {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 700;
+  color: #C2410C;
+  cursor: pointer;
+}
+
+.verifai-accordion-content {
+  padding: 8px 10px;
+  border-top: 1px solid #FED7AA;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 11px;
+}
+
+/* Style Signal */
+.verifai-style-box {
+  background: #F5F3FF;
+  border: 1px solid #DDD6FE;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 11px;
+}
+
+.verifai-style-title {
+  font-weight: 700;
+  color: #6D28D9;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.verifai-style-disclaimer {
+  font-size: 10px;
+  color: #64748B;
+  font-style: italic;
+  margin-top: 4px;
+}

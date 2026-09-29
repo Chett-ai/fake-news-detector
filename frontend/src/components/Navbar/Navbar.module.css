@@ -1,93 +1,140 @@
-.nav {
+/* ============================================================
+   Navbar — VERIFAI AI News
+   ============================================================ */
+
+.header {
   position: sticky;
   top: 0;
   z-index: 100;
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  background: rgba(6, 9, 18, 0.85);
+  font-family: var(--font-sans);
 }
 
-.inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 24px;
-  height: 62px;
+.nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: var(--bg-nav);
+  padding: 0 24px;
+  height: 52px;
+  gap: 12px;
 }
 
+/* Left */
+.left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.menuBtn {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.menuLine {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 2px;
+}
+
+.topicsLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Center brand */
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
 }
 
-.logo {
-  font-size: 22px;
+.brandIcon {
+  font-size: 1.1rem;
+  color: #7C9EFF;
 }
 
-.name {
-  font-size: 18px;
-  font-weight: 800;
-  background: linear-gradient(135deg, #7b8fff, #c084fc);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.tagline {
-  font-size: 11px;
-  color: #5a6480;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  border-left: 1px solid rgba(255, 255, 255, 0.08);
-  padding-left: 10px;
-  margin-left: 2px;
-}
-
-.badges {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.badge {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 5px 12px;
-  border-radius: 999px;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  color: #63f5b2;
-  background: rgba(47, 230, 145, 0.08);
-  border: 1px solid rgba(47, 230, 145, 0.18);
-}
-
-.dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #63f5b2;
-  box-shadow: 0 0 10px #63f5b2;
-  animation: livePulse 1.5s infinite;
-}
-
-.badgeNeutral {
-  padding: 5px 12px;
-  border-radius: 999px;
-  font-size: 10px;
+.brandName {
+  font-size: 1.05rem;
   font-weight: 700;
-  letter-spacing: 0.5px;
-  color: #8896b3;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  color: #fff;
+  letter-spacing: 0.16em;
 }
 
-@keyframes livePulse {
-  0%, 100% { opacity: 0.5; transform: scale(0.8); }
-  50%       { opacity: 1;   transform: scale(1.15); }
+/* Right */
+.right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.domainTag {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  display: none;
+}
+
+@media (min-width: 720px) {
+  .domainTag { display: block; }
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  background: var(--color-violet);
+  color: #fff;
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: background 0.15s ease, transform 0.1s ease;
+  white-space: nowrap;
+}
+
+.ctaBtn:hover {
+  background: #6D28D9;
+  transform: translateY(-1px);
+}
+
+/* Breadcrumb strip */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border-bottom: 1px solid var(--border-card);
+  padding: 7px 24px;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.sep { color: var(--border-card); }
+
+.active {
+  color: var(--color-violet);
+  font-weight: 600;
 }

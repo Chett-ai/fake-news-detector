@@ -1,165 +1,246 @@
+/* ============================================================
+   EvidenceLedgerCard — Transparency-First CSS
+   ============================================================ */
+
 .card {
-  margin-top: 26px;
-  padding: 28px;
-  border-radius: 26px;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  background: linear-gradient(
-    145deg,
-    rgba(14, 19, 36, 0.92),
-    rgba(7, 10, 20, 0.97)
-  );
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
-}
-
-.header {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 22px;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
 }
 
-.sectionLabel {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: #5a6a88;
-}
-
-.live {
+/* ── Epistemic Assessment Banner ── */
+.assessmentBanner {
+  border: 1px solid;
+  border-radius: var(--radius-md);
+  padding: 20px 22px;
   display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  color: #63f5b2;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.statusDot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #63f5b2;
-  box-shadow: 0 0 10px #63f5b2;
-  animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 0.5; transform: scale(0.8); }
-  50%       { opacity: 1;   transform: scale(1.15); }
-}
-
-/* Result row */
-.resultRow {
+.assessmentHeader {
   display: flex;
-  align-items: center;
-  gap: 22px;
-  margin-bottom: 20px;
+  align-items: flex-start;
+  gap: 14px;
 }
 
-.icon {
-  width: 70px;
-  height: 70px;
-  border-radius: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  font-weight: 900;
+.assessmentIcon {
+  font-size: 1.8rem;
+  line-height: 1;
   flex-shrink: 0;
 }
 
-.iconReal {
-  background: rgba(47, 230, 145, 0.12);
-  border: 1px solid rgba(47, 230, 145, 0.25);
-  color: #63f5b2;
-}
-
-.iconFake {
-  background: rgba(255, 86, 115, 0.12);
-  border: 1px solid rgba(255, 86, 115, 0.25);
-  color: #ff718c;
-}
-
-.iconDisputed {
-  background: rgba(245, 158, 11, 0.12);
-  border: 1px solid rgba(245, 158, 11, 0.25);
-  color: #fcd34d;
-}
-
-.iconUnknown {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: #6878a0;
-}
-
-/* Labels */
-.predLabel,
-.confLabel {
-  font-size: 10px;
+.assessmentBadge {
+  display: block;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 1.5px;
-  color: #4e5e7a;
-  margin-bottom: 6px;
+  letter-spacing: 0.08em;
+  margin-bottom: 2px;
 }
 
-.prediction {
-  font-size: 32px;
-  font-weight: 900;
-  letter-spacing: -0.5px;
-  color: #c0cce8;
-}
-
-.labelReal { color: #63f5b2; }
-.labelFake { color: #ff718c; }
-.labelDisputed { color: #fcd34d; }
-
-.verdictSubtext {
-  font-size: 0.85rem;
-  color: #94a3b8;
-  margin-top: 6px;
-  line-height: 1.4;
-}
-
-.predictionArea { flex: 1; }
-
-.confidenceArea { text-align: right; }
-
-.confValue {
-  font-size: 24px;
+.assessmentTitle {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
   font-weight: 800;
-  color: #8898be;
+  line-height: 1.2;
 }
 
-.mlBadge {
-  font-size: 11px;
-  color: #64748b;
+.reasoning {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ── Tally Grid ── */
+.tallyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
   margin-top: 4px;
 }
 
-/* Bar */
-.barTrack {
-  height: 6px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  overflow: hidden;
-  margin-bottom: 16px;
+.tallyBox {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  text-align: center;
 }
 
-.barFill {
-  height: 100%;
-  border-radius: 999px;
-  width: 0%;
-  transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+.tallyNum {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.1;
 }
 
-.barReal  { background: linear-gradient(90deg, #2fe691, #63f5b2); }
-.barFake  { background: linear-gradient(90deg, #ff3658, #ff718c); }
-.barUnknown { background: rgba(255,255,255,0.2); }
+.tallyLabel {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+}
 
+/* ── Section Header ── */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sectionHeader {
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 8px;
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.sectionSubtitle {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+/* ── Source Cards ── */
+.sourceList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sourceCard {
+  background: var(--bg-page);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: border-color 0.15s ease;
+}
+
+.sourceCard:hover {
+  border-color: var(--color-indigo);
+}
+
+.sourceTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tierBadge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+
+.matchScore {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-indigo);
+  background: var(--color-blue-pale);
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+}
+
+.sourceTitle {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.35;
+}
+
+.sourceTitle a:hover {
+  color: var(--color-indigo);
+  text-decoration: underline;
+}
+
+.sourceSnippet {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.sourceName {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.noEvidenceState {
+  padding: 16px;
+  background: var(--bg-page);
+  border-radius: var(--radius-md);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* ── Secondary Style Signal Box ── */
+.styleSignalBox {
+  background: var(--color-violet-soft);
+  border: 1px solid rgba(124,58,237,0.2);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.styleHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.styleTag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--color-violet);
+  letter-spacing: 0.08em;
+}
+
+.styleMeta {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.styleNote {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  font-style: italic;
+}
+
+.styleBarRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.76rem;
+  color: var(--text-primary);
+  padding-top: 4px;
+  border-top: 1px solid rgba(124,58,237,0.12);
+}
+
+/* ── Disclaimer ── */
 .disclaimer {
-  font-size: 12px;
-  color: #4a5870;
-  line-height: 1.6;
-  margin: 0;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-style: italic;
+  text-align: center;
 }

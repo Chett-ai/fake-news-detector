@@ -1,10 +1,10 @@
 import styles from "./FactCheckSection.module.css";
-import type { FactCheckItem, VerificationStatus } from "@/types";
+import type { DirectFactCheck } from "@/types";
 
 interface Props {
-  directChecks: FactCheckItem[];
-  relatedChecks: FactCheckItem[];
-  status?: VerificationStatus;
+  directChecks: DirectFactCheck[];
+  relatedChecks: DirectFactCheck[];
+  status?: string;
   message?: string;
 }
 
@@ -23,15 +23,15 @@ export default function FactCheckSection({
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h3 className={styles.heading}>🔍 Fact-Checking Verification</h3>
+        <h3 className={styles.heading}>🔍 Institutional Fact-Checking Registry</h3>
         {status && (
           <span
             className={`${styles.statusBadge} ${
               status === "CONTRADICTED"
                 ? styles.statusContradicted
-                : status === "VERIFIED"
-                ? styles.statusVerified
-                : styles.statusNeutral
+                : status === "CORROBORATED"
+                ? styles.statusCorroborated
+                : styles.statusUnverified
             }`}
           >
             {status}
@@ -42,26 +42,33 @@ export default function FactCheckSection({
       {message && <p className={styles.message}>{message}</p>}
 
       {allChecks.length > 0 && (
-        <div className={styles.list}>
-          {allChecks.map((claim, idx) => (
-            <div key={idx} className={styles.item}>
-              <div className={styles.claimHeader}>
-                <span className={styles.claimant}>
-                  {claim.publisher || "Fact Check Publisher"}
+        <div className={styles.grid}>
+          {allChecks.map((item, idx) => (
+            <div key={idx} className={styles.card}>
+              <div className={styles.cardHeader}>
+                <span className={styles.publisher}>{item.publisher}</span>
+                <span
+                  className={`${styles.ratingBadge} ${
+                    item.interpretation === "CONTRADICTED"
+                      ? styles.ratingFake
+                      : styles.ratingReal
+                  }`}
+                >
+                  {item.rating}
                 </span>
-                {claim.rating && (
-                  <span className={styles.ratingBadge}>{claim.rating}</span>
-                )}
               </div>
-              <p className={styles.claimText}>"{claim.claim}"</p>
-              {claim.url && (
+              <p className={styles.claim}>"{item.claim_text}"</p>
+              {item.claimant && (
+                <span className={styles.claimant}>Claimant: {item.claimant}</span>
+              )}
+              {item.url && (
                 <a
-                  href={claim.url}
+                  href={item.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.link}
                 >
-                  Read full review on {claim.publisher || "source"} →
+                  Read full debunk ↗
                 </a>
               )}
             </div>

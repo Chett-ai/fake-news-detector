@@ -1,63 +1,137 @@
+/* ============================================================
+   VERIFAI — AI News Verification Platform
+   Design System: Colors, Typography, Tokens
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap');
+
 :root {
-  --bg-primary: #05070f;
-  --bg-surface: #0a0e1c;
-  --card-bg: rgba(13, 19, 36, 0.7);
-  --card-border: rgba(255, 255, 255, 0.07);
-  --card-hover: rgba(255, 255, 255, 0.12);
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --text-dim: #64748b;
-  --accent-cyan: #38bdf8;
-  --accent-indigo: #6366f1;
-  --accent-purple: #a855f7;
-  --color-fake: #f43f5e;
-  --color-real: #10b981;
+  /* Brand — electric violet/indigo AI theme */
+  --color-navy:       #1E2B78;
+  --color-indigo:     #2E37B6;
+  --color-blue:       #2563EB;
+  --color-blue-light: #3B82F6;
+  --color-blue-pale:  #EFF6FF;
+  --color-violet:     #7C3AED;
+  --color-violet-soft:#F5F3FF;
+  --color-cyan:       #0891B2;
+  --color-cyan-soft:  #ECFEFF;
+
+  /* Verdicts */
+  --color-real:        #16A34A;
+  --color-real-bg:     #F0FDF4;
+  --color-real-pill:   #DCFCE7;
+  --color-fake:        #DC2626;
+  --color-fake-bg:     #FEF2F2;
+  --color-fake-pill:   #FEE2E2;
+  --color-unclear:     #D97706;
+  --color-unclear-bg:  #FFFBEB;
+  --color-unclear-pill:#FEF3C7;
+  --color-unverified:  #64748B;
+  --color-unverified-bg:#F8FAFC;
+
+  /* Surfaces */
+  --bg-page:           #F8FAFC;
+  --bg-card:           #FFFFFF;
+  --bg-nav:            #1E2B78;
+  --bg-skeleton:       #E2E8F0;
+  --bg-skeleton-shine: #F1F5F9;
+
+  /* Text */
+  --text-primary:   #0F172A;
+  --text-secondary: #475569;
+  --text-muted:     #94A3B8;
+  --text-on-dark:   #FFFFFF;
+
+  /* Borders */
+  --border-card:   #E2E8F0;
+  --border-subtle: #F1F5F9;
+
+  /* Radius */
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-pill: 999px;
+
+  /* Shadows */
+  --shadow-card:  0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+  --shadow-hover: 0 4px 20px rgba(46,55,182,0.12);
+
+  /* Fonts */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans:  'Inter', -apple-system, sans-serif;
+
+  /* Transitions */
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html,
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
-  background-color: var(--bg-primary);
-  color: var(--text-main);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", "Helvetica Neue", Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-sans);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  line-height: 1.6;
 }
 
-body {
-  min-height: 100vh;
-  background-image: 
-    radial-gradient(circle at 10% 8%, rgba(99, 102, 241, 0.15) 0%, transparent 45%),
-    radial-gradient(circle at 90% 25%, rgba(56, 189, 248, 0.12) 0%, transparent 45%),
-    radial-gradient(circle at 50% 75%, rgba(168, 85, 247, 0.09) 0%, transparent 55%),
-    linear-gradient(180deg, #05070f 0%, #070a16 100%);
-  background-attachment: fixed;
+a { color: inherit; text-decoration: none; }
+
+/* ============================================================
+   SKELETON SHIMMER — reusable on any element
+   ============================================================ */
+@keyframes shimmer {
+  0%   { background-position: -600px 0; }
+  100% { background-position:  600px 0; }
+}
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-skeleton) 25%,
+    var(--bg-skeleton-shine) 50%,
+    var(--bg-skeleton) 75%
+  );
+  background-size: 600px 100%;
+  animation: shimmer 1.4s infinite linear;
+  border-radius: var(--radius-sm);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* ============================================================
+   RESULT ANIMATION — slide-up fade
+   ============================================================ */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
+.animateIn { animation: slideUp 0.45s var(--ease-spring) both; }
 
-/* Modern thin scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+/* Stagger delays for sequenced reveal */
+.animateIn:nth-child(1) { animation-delay: 0ms; }
+.animateIn:nth-child(2) { animation-delay: 60ms; }
+.animateIn:nth-child(3) { animation-delay: 120ms; }
+.animateIn:nth-child(4) { animation-delay: 180ms; }
+.animateIn:nth-child(5) { animation-delay: 240ms; }
+
+/* ============================================================
+   UTILITY PILLS
+   ============================================================ */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
-::-webkit-scrollbar-track {
-  background: rgba(5, 7, 15, 0.8);
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 999px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.25);
-}
+.pill--blue    { background: var(--color-blue);         color: #fff; }
+.pill--navy    { background: var(--color-navy);         color: #fff; }
+.pill--violet  { background: var(--color-violet);       color: #fff; }
+.pill--cyan    { background: var(--color-cyan);         color: #fff; }
+.pill--real    { background: var(--color-real-pill);    color: var(--color-real); }
+.pill--fake    { background: var(--color-fake-pill);    color: var(--color-fake); }
+.pill--unclear { background: var(--color-unclear-pill); color: var(--color-unclear); }
+.pill--muted   { background: var(--border-subtle);      color: var(--text-muted); }

@@ -14,18 +14,15 @@ import { useLiveNews } from "@/hooks/useLiveNews";
 import type { NewsArticle, NewsCategory } from "@/types";
 import styles from "./page.module.css";
 
-const CATEGORIES: { id: NewsCategory; label: string }[] = [
-  { id: "general", label: "🌐 General" },
-  { id: "business", label: "💼 Business" },
-  { id: "technology", label: "💻 Tech" },
-  { id: "science", label: "🔬 Science" },
-  { id: "health", label: "🏥 Health" },
-  { id: "sports", label: "⚽ Sports" },
-  { id: "entertainment", label: "🎬 Entertainment" },
+const AI_CATEGORIES: { id: NewsCategory; label: string }[] = [
+  { id: "technology", label: "🤖 AI Models & Tech" },
+  { id: "business", label: "📈 Industry & Startups" },
+  { id: "science", label: "🔬 AI Research & Papers" },
+  { id: "general", label: "🌐 AI Policy & Ethics" },
 ];
 
 export default function Home() {
-  const { data, loading, error, analyze, reset } = useAnalyze();
+  const { data, loading, step, error, analyze, reset } = useAnalyze();
   const {
     articles,
     category,
@@ -54,45 +51,53 @@ export default function Home() {
       <Navbar />
 
       <main className={styles.main}>
+        {/* Hero Section */}
         <div className={styles.hero}>
-          <div className={styles.badge}>Next-Gen AI Truth Verification</div>
+          <div className={styles.badge}>◈ TRANSPARENCY-FIRST EVIDENCE LEDGER</div>
           <h1 className={styles.title}>
-            Analyze News with <span className={styles.gradient}>Explainable AI</span>
+            Investigate Worldwide <span className={styles.gradient}>AI Claims &amp; Developments</span>
           </h1>
           <p className={styles.subtitle}>
-            Detect disinformation patterns using Machine Learning, explain predictions with SHAP,
-            and cross-reference verified claims with Google Fact Check in real-time.
+            Find, rank, and evaluate multi-source evidence across official company blogs, arXiv, institutional fact-checkers, and tech press.
           </p>
         </div>
 
+        {/* Dynamic Input Component */}
         <ArticleInput
           value={inputVal}
           onChange={setInputVal}
           onAnalyze={analyze}
           onClear={handleClear}
           loading={loading}
+          step={step}
         />
 
         {error && <div className={styles.errorBox}>⚠️ {error}</div>}
 
+        {/* Results Area */}
         {data && (
-          <div className={styles.resultsArea}>
-            {data.research_dossier && (
-              <ResearchDossierView
-                dossier={data.research_dossier}
-                redditThreads={data.reddit_threads}
-                newsConsensus={data.news_consensus}
-              />
-            )}
+          <div className={`${styles.resultsArea} animateIn`}>
+            {/* 1. Primary Evidence Ledger */}
+            <PredictionCard data={data} />
+            
+            {/* 2. Isolated Community Sentiment (Non-Evidentiary) */}
+            <ResearchDossierView
+              communitySentiment={data.community_sentiment}
+            />
+            
+            {/* 3. Rhetoric Heatmap */}
             <RhetoricHeatmap
               rhetoric={data.rhetoric_analysis}
               temporal={data.temporal_audit}
             />
-            <PredictionCard data={data} />
+
+            {/* 4. Secondary Linguistic Style Signal (SHAP) */}
             <ShapExplainer
               shapWords={data.shap_words}
               available={data.shap_available}
             />
+
+            {/* 5. Direct Institutional Fact Checks */}
             <FactCheckSection
               directChecks={data.direct_fact_checks}
               relatedChecks={data.related_fact_checks}
@@ -102,9 +107,10 @@ export default function Home() {
           </div>
         )}
 
+        {/* Live News Section */}
         <LiveNewsSection
           articles={articles}
-          categories={CATEGORIES}
+          categories={AI_CATEGORIES}
           activeCategory={category}
           onSelectCategory={changeCategory}
           onSearch={search}
@@ -115,7 +121,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-        <p>TruthLens &bull; Explainable Fake News Detection Platform</p>
+        <p>VERIFAI &bull; Transparency-First AI Evidence &amp; Verification Ledger Engine</p>
       </footer>
     </div>
   );

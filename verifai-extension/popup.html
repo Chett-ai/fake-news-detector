@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VerifAI Manual Claim Check</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="header">
+    <div class="brand">◈ VERIFAI LEDGER</div>
+    <span class="sub">AI News Verification</span>
+  </header>
+
+  <main class="main">
+    <label for="claim-input" class="label">MANUAL CLAIM CHECK</label>
+    <textarea id="claim-input" placeholder="Paste or type an AI claim to verify… (e.g., 'OpenAI releases GPT-5')" rows="3"></textarea>
+
+    <button id="verify-btn" class="btn">◈ Verify Evidence Ledger</button>
+
+    <div id="result-container"></div>
+
+    <section class="recent-section">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 6px;">
+        <div class="recent-title" style="margin-bottom:0;">RECENT CHECKS (LAST 5)</div>
+        <button id="clear-cache-btn" style="background:none; border:none; color:#64748B; font-size:10px; cursor:pointer; text-decoration:underline;">Clear Cache</button>
+      </div>
+      <div id="recent-list" class="recent-list"></div>
+    </section>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>
