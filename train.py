@@ -19,6 +19,7 @@ Usage:
 """
 
 import os
+import numpy as np
 import pandas as pd
 import joblib
 
@@ -122,8 +123,18 @@ def main():
     joblib.dump(model, MODEL_PATH)
     joblib.dump(vectorizer, VECTORIZER_PATH)
 
-    print(f"\nSaved model to      {MODEL_PATH}")
-    print(f"Saved vectorizer to {VECTORIZER_PATH}")
+    # ----------------------------------------------------------
+    # Save SHAP background: mean TF-IDF vector across training set
+    # Used by shap.LinearExplainer as the baseline ("expected")
+    # feature vector at inference time.
+    # ----------------------------------------------------------
+    background_mean = np.array(X_train_tfidf.mean(axis=0))
+    shap_background_path = os.path.join(MODEL_DIR, "shap_background.npy")
+    np.save(shap_background_path, background_mean)
+
+    print(f"\nSaved model to          {MODEL_PATH}")
+    print(f"Saved vectorizer to     {VECTORIZER_PATH}")
+    print(f"Saved SHAP background to {shap_background_path}")
 
 
 if __name__ == "__main__":
